@@ -6,8 +6,8 @@ from users.models import CustomUser
 class UserModelTest(APITestCase):
     def test_user_creation_success(self):
         """Тест успешного создания пользователя"""
-        email = "testuser@example.com"
-        password = "testpass123"
+        email = "test_user@example.com"
+        password = "testadmin14"
 
         user = CustomUser.objects.create_user(email=email, password=password)
 

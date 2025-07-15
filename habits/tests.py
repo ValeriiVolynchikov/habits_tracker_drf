@@ -12,11 +12,8 @@ from rest_framework.test import APITestCase
 from habits.models import Habit
 from habits.services import send_information_about_new_habit_tg
 from habits.tasks import telegram_message
-from habits.validators import (
-    validate_execution_time,
-    validate_linked_or_reward,
-    validate_periodicity,
-)
+from habits.validators import (validate_execution_time,
+                               validate_linked_or_reward, validate_periodicity)
 
 User = get_user_model()
 
@@ -270,4 +267,3 @@ class TelegramMessageTaskTests(APITestCase):
         now = datetime.now(zone)
         expected_datetime = datetime.combine(now.date(), old_time) + timedelta(days=1)
         self.assertEqual(self.habit.time, expected_datetime.time())
-

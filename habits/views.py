@@ -1,6 +1,6 @@
+from django.http import HttpResponse
 from rest_framework import generics, permissions
 
-from django.http import HttpResponse
 from .models import Habit
 from .paginators import HabitPagination
 from .serializers import HabitSerializer

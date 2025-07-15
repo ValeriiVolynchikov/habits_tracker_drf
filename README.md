@@ -1,0 +1,188 @@
+# Habit Tracker API
+
+Проект представляет собой backend-сервис для отслеживания полезных привычек. Пользователи могут создавать свои привычки,
+получать напоминания через Telegram и управлять своим прогрессом.
+
+---
+
+## Возможности
+
+- Создание и управление привычками
+- Периодические напоминания через Telegram
+- Публичные привычки (доступны всем пользователям)
+- Аутентификация и авторизация
+- Отложенные задачи через Celery
+- Валидация правил привычек
+- Пагинация
+- CORS-конфигурация
+- Работа с переменными окружения через `.env`
+
+---
+
+## 🛠 Технологии
+
+- Python 3.10+
+- Django 4+
+- Django REST Framework
+- Celery + Redis
+- Telegram Bot API
+- requests, pytz
+- django-cors-headers
+
+## Установка и запуск
+
+### 1. Клонировать репозиторий
+
+```bash
+  git clone https://github.com/LeojBang/habits-tracker-drf.git
+```
+
+### 2. Создать и активировать виртуальное окружение
+
+```bash
+    python -m venv venv
+    source venv/bin/activate  
+```
+
+```bash
+    Windows: venv\Scripts\activate
+```
+
+### 3. Установить зависимости
+
+```bash
+    pip install -r requirements.txt
+```
+
+### 4. Настроить переменные окружения:
+
+Создайте файл .env:
+
+```
+SECRET_KEY=your-secret-key
+DEBUG=True
+
+POSTGRES_DB=habits_tracker
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your-password
+DB_HOST=db
+DB_PORT=5432
+
+EMAIL_HOST=smtp.yandex.ru
+EMAIL_PORT=465
+EMAIL_HOST_USER=your-email
+EMAIL_HOST_PASSWORD=your-password
+EMAIL_USE_SSL=True
+
+CELERY_BROKER_URL=redis://redis:6379/0
+REDIS_URL=redis://redis:6379
+
+CACHE_ENABLED=True
+
+TELEGRAM_BOT_TOKEN=your-token
+TELEGRAM_URL=https://api.telegram.org/bot
+```
+
+### 5. Применить миграции и создать суперпользователя:
+
+```
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+---
+
+
+### 1. Настройка переменных окружения
+
+Создайте файл `.env` в корне проекта (на основе `.env_sample`):
+
+```bash
+  cp .env_sample .env
+```
+
+Заполните все необходимые переменные, особенно обратите внимание на:
+
+env
+
+
+### 3. Сервисы и их порты
+
+После запуска будут доступны:
+
+```
+Django приложение - http://localhost:8000
+
+Admin панель - http://localhost:8000/admin
+
+PostgreSQL - порт 5432 (внутри Docker-сети)
+
+Redis - порт 6379 (внутри Docker-сети)
+```
+
+### 6. Запустить сервер:
+
+```bash
+  python manage.py runserver
+```
+
+### 7. Запустить воркер Celery:
+
+```bash
+  celery -A config worker --loglevel=info
+```
+
+### 8. Тестирование:
+
+Запустить тесты и узнать результат покрытия
+
+```bash
+  coverage run --source='.' manage.py test
+```
+
+```bash
+  coverage report -m
+```
+
+
+## Деплой на сервер с Docker и Nginx
+
+### 1. Установи зависимости на сервер
+
+На сервере должны быть установлены:
+```
+•	Docker
+•	docker-compose
+•	доступ по SSH
+```
+
+### 2. Клонируй репозиторий на сервер
+```
+git clone https://github.com/ValeriiVolynchikov/habits_tracker_drf.git
+cd habits_tracker_drf
+```
+### ⚙️ 3. Создай .env файл
+```
+SECRET_KEY=your-secret-key
+DEBUG=True
+
+POSTGRES_DB=habits_tracker
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your-password
+DB_HOST=db
+DB_PORT=5432
+
+EMAIL_HOST=smtp.yandex.ru
+EMAIL_PORT=465
+EMAIL_HOST_USER=your-email
+EMAIL_HOST_PASSWORD=your-password
+EMAIL_USE_SSL=True
+
+CELERY_BROKER_URL=redis://redis:6379/0
+REDIS_URL=redis://redis:6379
+
+CACHE_ENABLED=True
+
+TELEGRAM_BOT_TOKEN=your-token
+TELEGRAM_URL=https://api.telegram.org/bot
+```
