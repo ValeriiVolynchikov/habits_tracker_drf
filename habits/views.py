@@ -1,9 +1,22 @@
 from rest_framework import generics, permissions
 
+from django.http import HttpResponse
 from .models import Habit
 from .paginators import HabitPagination
 from .serializers import HabitSerializer
 from .services import send_information_about_new_habit_tg
+
+
+def home_view(request):
+    return HttpResponse("""
+    <h1>Добро пожаловать в Habits Tracker API!</h1>
+    <p>Доступные эндпоинты:</p>
+    <ul>
+        <li><a href="/admin/">Админка</a></li>
+        <li><a href="/swagger/">Swagger UI</a></li>
+        <li><a href="/redoc/">ReDoc</a></li>
+    </ul>
+    """)
 
 
 class HabitListCreateView(generics.ListCreateAPIView):
