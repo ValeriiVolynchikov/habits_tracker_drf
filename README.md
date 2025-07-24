@@ -119,7 +119,59 @@ PostgreSQL - порт 5432 (внутри Docker-сети)
 
 Redis - порт 6379 (внутри Docker-сети)
 ```
+4. Полезные команды
+   Просмотр логов:
 
+```bash
+  docker-compose logs -f  # всех сервисов
+  docker-compose logs -f web  # только Django
+```
+
+Остановка контейнеров:
+
+```bash
+  docker-compose down
+```
+
+Применение миграций:
+
+```bash
+  docker-compose exec web python manage.py migrate
+```
+
+Создание суперпользователя:
+
+```bash
+  docker-compose exec web python manage.py createsuperuser
+```
+
+Запуск тестов:
+
+```bash
+  docker-compose exec web python manage.py test
+```
+
+### 5. Проверка работы Celery
+
+Просмотр логов Celery worker:
+
+```bash
+  docker-compose logs -f celery
+```
+
+Просмотр логов Celery beat:
+
+```bash
+  docker-compose logs -f celery-beat
+```
+
+### 6. Очистка
+
+Для полной очистки (включая volumes):
+
+```bash
+  docker-compose down -v
+```
 ### 6. Запустить сервер:
 
 ```bash
@@ -186,3 +238,4 @@ CACHE_ENABLED=True
 TELEGRAM_BOT_TOKEN=your-token
 TELEGRAM_URL=https://api.telegram.org/bot
 ```
+git
