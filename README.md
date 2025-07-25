@@ -213,7 +213,7 @@ Redis - порт 6379 (внутри Docker-сети)
 git clone https://github.com/ValeriiVolynchikov/habits_tracker_drf.git
 cd habits_tracker_drf
 ```
-### ⚙️ 3. Создай .env файл
+### 3. Создай .env файл
 ```
 SECRET_KEY=your-secret-key
 DEBUG=True
@@ -238,4 +238,3 @@ CACHE_ENABLED=True
 TELEGRAM_BOT_TOKEN=your-token
 TELEGRAM_URL=https://api.telegram.org/bot
 ```
-git
