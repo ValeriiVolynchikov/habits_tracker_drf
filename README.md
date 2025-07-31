@@ -19,7 +19,7 @@
 
 ---
 
-## 🛠 Технологии
+## Технологии
 
 - Python 3.10+
 - Django 4+
@@ -93,7 +93,7 @@ python manage.py createsuperuser
 ---
 
 
-gitЗапуск с помощью Docker
+Запуск с помощью Docker
 Проект полностью настроен для работы в Docker-контейнерах. Для работы потребуется установленные Docker и Docker Compose.
 
 1. Настройка переменных окружения
@@ -207,7 +207,7 @@ http://your-server-ip/
 
 • проксирует запросы на backend Django (контейнер web)
 • отдаёт статику из volume /app/staticfiles
-📁 nginx/nginx.conf
+  nginx/nginx.conf
 Пример содержимого:
 
 events {
