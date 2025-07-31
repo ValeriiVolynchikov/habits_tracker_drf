@@ -207,7 +207,7 @@ http://your-server-ip/
 
 • проксирует запросы на backend Django (контейнер web)
 • отдаёт статику из volume /app/staticfiles
-📁 nginx/nginx.conf
+  nginx/nginx.conf
 Пример содержимого:
 
 events {
